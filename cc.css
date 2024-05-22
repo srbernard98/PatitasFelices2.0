@@ -8,11 +8,14 @@ body {
 }
 
 .container {
+
+  background-color: gray;
     display: flex;
     align-items: center;
   }
 
   .texto {
+    color: white;
     flex: 1;
     padding-right: 20px;
   }
