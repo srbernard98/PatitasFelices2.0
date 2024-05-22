@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://static.vecteezy.com/system/resources/previews/007/159/523/non_2x/cartoon-of-dogs-in-the-park-landscape-vector.jpg);
+    background-image: url(https://png.pngtree.com/background/20210716/original/pngtree-cute-cartoon-dog-wallpaper-picture-image_1348618.jpg);
     background-size: cover; /* Escala la imagen para cubrir toda la página */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -7,5 +7,7 @@ body {
 }
 
 .card-img-top {
-    
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
