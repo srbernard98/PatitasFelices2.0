@@ -24,7 +24,25 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginSuccessModal">
+          Iniciar sesión
+        </button>
+
+        <div class="modal fade" id="loginSuccessModal" tabindex="-1" aria-labelledby="loginSuccessModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="loginSuccessModalLabel">Inicio de sesión correcto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ¡Has iniciado sesión correctamente!
+                <p><a class="btn btn-secondary" href="index.html">Siguiente &raquo;</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         
       </form>
       

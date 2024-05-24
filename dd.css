@@ -1,0 +1,18 @@
+.carousel-inner {
+    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20240102/pngtree-seamless-pattern-of-cartoon-kittens-playful-shorthaired-cats-in-a-vector-image_13903212.png);
+    background-size: cover; /* Escala la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen de fondo */
+
+}
+
+.carousel-item {
+    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20240102/pngtree-seamless-pattern-of-cartoon-kittens-playful-shorthaired-cats-in-a-https://www.petlife.mx/u/fotografias/m/2023/7/26/f425x230-4481_18463_5050.jpg-image_13903212.png);
+    background-size: cover; /* Escala la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen de fondo */
+
+
+}
