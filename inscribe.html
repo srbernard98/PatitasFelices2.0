@@ -75,6 +75,13 @@
             <input type="number" id="petWeight" name="petWeight" required>
         </div>
         <div class="form-group">
+            <label for="petSex">Sexo de la Mascota</label>
+            <select id="petSex" name="petSex" required>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="vaccines">Vacunas</label>
             <textarea id="vaccines" name="vaccines" required></textarea>
         </div>
@@ -129,6 +136,7 @@
                 petName: formData.get('petName'),
                 petAge: formData.get('petAge'),
                 petWeight: formData.get('petWeight'),
+                petSex: formData.get('petSex'),
                 vaccines: formData.get('vaccines'),
                 sterilized: formData.get('sterilized'),
                 petImages: []
@@ -153,6 +161,7 @@
                 <h3>${petData.petName} (${petData.petType})</h3>
                 <p>Edad: ${petData.petAge} años</p>
                 <p>Peso: ${petData.petWeight} kg</p>
+                <p>Sexo: ${petData.petSex}</p>
                 <p>Vacunas: ${petData.vaccines}</p>
                 <p>Esterilizado: ${petData.sterilized}</p>
                 <p>Contacto: ${petData.ownerName}, ${petData.phoneNumber}, ${petData.email}</p>
