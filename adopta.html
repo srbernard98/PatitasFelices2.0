@@ -6,7 +6,6 @@
     <title>Adopcion</title>
     <link rel="stylesheet" href="bb.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-
 </head>
 <body>
     <header data-bs-theme="dark">
@@ -34,82 +33,65 @@
               </div>
             </div>
           </nav>
-        </header>
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-4 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="Animal Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <input type="text" class="animal-id" placeholder="Enter animal ID" value="206" disabled id="animal-id-206">  
-                            <button class="btn btn-primary get-animal" data-animal-id="206">Mas Info</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="Animal Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <input type="text" class="animal-id" placeholder="Enter animal ID" value="220" disabled id="animal-id-220">  
-                            <button class="btn btn-primary get-animal" data-animal-id="220">Mas Info</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="card" style="width: 18rem;">
-                      <img src="" class="card-img-top" alt="Animal Image">
-                      <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <input type="text" class="animal-id" placeholder="Enter animal ID" value="205" disabled id="animal-id-205">  
-                          <button class="btn btn-primary get-animal" data-animal-id="205">Mas Info</button>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="Animal Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <input type="text" class="animal-id" placeholder="Enter animal ID" value="183" disabled id="animal-id-183">  
-                        <button class="btn btn-primary get-animal" data-animal-id="183">Mas Info</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card" style="width: 18rem;">
-                  <img src="" class="card-img-top" alt="Animal Image">
-                  <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <input type="text" class="animal-id" placeholder="Enter animal ID" value="186" disabled id="animal-id-186">  
-                      <button class="btn btn-primary get-animal" data-animal-id="186">Mas Info</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="Animal Image">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <input type="text" class="animal-id" placeholder="Enter animal ID" value="156" disabled id="animal-id-156">  
-                    <button class="btn btn-primary get-animal" data-animal-id="156">Mas Info</button>
-                </div>
-            </div>
-        </div>
-                <!-- Repeat the above block for more cards -->
-            </div>
-        </div>
+    </header>
 
-      <script src="./js/bootstrap.bundle.min.js"></script>
-      <script src="./js/jquery-3.6.0.min.js"></script>
-      <script src="./js/enlace_api.js" ></script>
-      
+    <div class="container mt-5" id="card-container">
+        <div class="row">
+            <!-- Tarjetas se generarán aquí -->
+        </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var apiUrl = "https://huachitos.cl/api/animales/estado/adopcion";
+            var animales = [];
+
+            $.get(apiUrl, function(data){
+                $.each(data.data, function(i, item){
+                    var text = item.desc_adicional;
+                    var nuevoTexto = text.replace(/\//g, "");
+                    nuevoTexto = nuevoTexto.replace(/<p>/g, "");
+
+                    var animal = {
+                        id: item.id,
+                        nombre: item.nombre,
+                        imagen: item.imagen,
+                        descripcion: nuevoTexto
+                    };
+
+                    animales.push(animal);
+                });
+
+                var $container = $('#card-container .row');
+
+                // Iterar sobre el array de animales y generar tarjetas
+                animales.forEach(function(animal) {
+                    var cardHtml = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="${animal.imagen}" class="card-img-top" alt="${animal.nombre}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${animal.nombre}</h5>
+                                    <p class="card-text">${animal.descripcion}</p>
+                                    <input type="text" class="animal-id" value="${animal.id}" disabled>
+                                    <button class="btn btn-primary get-animal" data-animal-id="${animal.id}">Get Animal</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $container.append(cardHtml);
+                });
+
+                // Aquí puedes agregar el código para manejar la funcionalidad del botón "Get Animal"
+                $(".get-animal").click(function(){
+                    var animalId = $(this).data("animal-id");
+                    // Hacer algo con el ID del animal, como obtener más información del animal, etc.
+                    console.log("Animal ID:", animalId);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
