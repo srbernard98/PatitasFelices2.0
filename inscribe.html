@@ -9,6 +9,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
+
+        .formulario{
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
         body {
             background-image: url(https://png.pngtree.com/background/20230519/original/pngtree-hd-wallpaper-of-cartoon-dogs-picture-image_2662875.jpg);
             background-size: cover; /* Escala la imagen para cubrir toda la página */
@@ -102,7 +112,7 @@
           </nav>
     </header>
     <div class="formulario">
-    <h1>Formulario de Registro de Mascotas para Adopción</h1>
+    <h1>Registro de Mascotas para Adopción</h1>
     <form id="adoptionForm">
         <div class="form-group">
             <label for="ownerName">Nombre del Dueño</label>
@@ -170,7 +180,6 @@
                 <option value="pequeña">Pequeña</option>
             </select>
         </div>
-    
         <script>
             function handlePetTypeChange() {
                 var petType = document.getElementById('petType').value;
