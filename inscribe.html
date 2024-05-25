@@ -47,6 +47,29 @@
         .submit-button:hover {
             background-color: #45a049;
         }
+        .card {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            margin: 16px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .card img {
+            width: 100px;
+            height: auto;
+            margin: 4px;
+            border-radius: 5px;
+        }
+        .card p {
+            margin: 8px 0;
+        }
     </style>
 </head>
 
@@ -132,11 +155,35 @@
         </div>
         <div class="form-group">
             <label for="petType">Tipo de Mascota</label>
-            <select id="petType" name="petType" required>
+            <select id="petType" name="petType" required onchange="handlePetTypeChange()">
                 <option value="perro">Perro</option>
                 <option value="gato">Gato</option>
             </select>
         </div>
+    
+        <div class="form-group hidden" id="dogSizeGroup">
+            <label for="dogSize">Tamaño de la Raza</label>
+            <select id="dogSize" name="dogSize" required>
+                <option value="grande">Grande</option>
+                <option value="mediana">Mediana</option>
+                <option value="pequeña">Pequeña</option>
+            </select>
+        </div>
+    
+        <script>
+            function handlePetTypeChange() {
+                var petType = document.getElementById('petType').value;
+                var dogSizeGroup = document.getElementById('dogSizeGroup');
+    
+                if (petType === 'perro') {
+                    dogSizeGroup.classList.remove('hidden');
+                    document.getElementById('dogSize').required = true;
+                } else {
+                    dogSizeGroup.classList.add('hidden');
+                    document.getElementById('dogSize').required = false;
+                }
+            }
+        </script>
         <div class="form-group">
             <label for="petName">Nombre de la Mascota</label>
             <input type="text" id="petName" name="petName" required>
@@ -233,20 +280,30 @@
         function displayPet(petData) {
             const adoptionList = document.getElementById('adoptionList');
             const petDiv = document.createElement('div');
+            petDiv.className = 'card';
+            
+            let dogSizeInfo = '';
+            if (petData.petType === 'Perro' && petData.dogSize) {
+                dogSizeInfo = `<p>Tamaño: ${petData.dogSize}</p>`;
+            }
+
             petDiv.innerHTML = `
-                <h3>${petData.petName} (${petData.petType})</h3>
+                <h3>${petData.petType}, ${petData.petName}, ${dogSizeInfo}</h3>
                 <p>Edad: ${petData.petAge} años</p>
                 <p>Peso: ${petData.petWeight} kg</p>
                 <p>Sexo: ${petData.petSex}</p>
                 <p>Vacunas: ${petData.vaccines}</p>
                 <p>Esterilizado: ${petData.sterilized}</p>
-                <p>Contacto: ${petData.ownerName}, ${petData.phoneNumber}, ${petData.email}</p>
+                <h4>PARA MÁS INFORMACIÓN CONTACTAR</h4>
+                <p>${petData.ownerName}, ${petData.phoneNumber}, ${petData.email}</p>
             `;
+
             petData.petImages.forEach(src => {
                 const img = document.createElement('img');
                 img.src = src;
                 petDiv.appendChild(img);
             });
+
             adoptionList.appendChild(petDiv);
         }
     </script>
