@@ -160,10 +160,10 @@
         <label for="confirmPassword">Confirmar Contraseña:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
     
-        <input type="submit" value="Registrarse">
+        <input id="Registrar" type="submit" value="Registrarse">
       </form>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       document.getElementById("registrationForm").addEventListener("submit", function(event) {
         var password = document.getElementById("password").value;
@@ -179,6 +179,22 @@
       });
     </script>
         
-        
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+                   const boton = document.querySelector('#Registrar');
+                   boton.addEventListener('mouseover', function() {
+                       boton.style.backgroundColor = 'green';
+                   });
+                   boton.addEventListener('mouseout', function() {
+                       boton.style.backgroundColor = '';
+                   });    
+               });
+        </script>
+        <script>
+          document.querySelector('#Registrar').addEventListener('click', function() {
+              if (confirm('REGISTRO CARGADO CON EXITO')) {
+              }
+          });
+      </script>
 </body>
 </html>
