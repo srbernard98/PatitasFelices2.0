@@ -1,0 +1,38 @@
+*
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+    background-image: url('https://images2.alphacoders.com/132/thumb-1920-1327359.png'); 
+    background-repeat: no-repeat; 
+    background-size: auto; 
+    background-position: center; 
+}
+
+
+
+
+  /* Alineación de la navegación en la parte superior izquierda */
+  .navbar {
+    justify-content: flex-start;
+  }
+  
+  /* Estilo del fondo de la navegación */
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.6); /* Cambia el color de fondo según tus preferencias */
+  }
+  
+  /* Tarjetas en fila horizontal */
+  .container .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .container .row .col-md-4 {
+    flex: 0 0 calc(33.33% - 20px); /* Cambia el tamaño de las tarjetas según tus preferencias */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+  }  
